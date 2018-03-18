@@ -1,6 +1,10 @@
 #!/usr/bin/env ruby
 
 def solve(needs, all_packages)
+  all_packages.each_with_index do |packages, i|
+    all_packages[i] = packages.sort.reverse
+  end
+
   min_grams = needs.map{ |n| n*0.9 }
   max_serving = all_packages.each_with_index.map do |packages, i|
     packages.map{ |p| (p/min_grams[i]).to_i }.max
